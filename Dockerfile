@@ -7,7 +7,5 @@ RUN go get -u github.com/vmware/govmomi/govc
 FROM photon:3.0
 COPY --from=builder /go/bin/govc .
 COPY --from=builder /go/bin/vcsim .
-ADD /ssl/untrusted_cert.pem ./untrusted_cert.pem
-ADD /ssl/untrusted_key.pem ./untrusted_key.pem
 ENTRYPOINT ["./vcsim"]
 CMD ["-tls=0","-l=0.0.0.0:8989"]
