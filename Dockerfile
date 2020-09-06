@@ -10,4 +10,4 @@ COPY --from=builder /go/bin/vcsim .
 ADD /ssl/untrusted_cert.pem ./untrusted_cert.pem
 ADD /ssl/untrusted_key.pem ./untrusted_key.pem
 ENTRYPOINT ["./vcsim"]
-CMD ["-httptest.serve", "0.0.0.0:8989", "-tls", "-tlscert", "/untrusted_cert.pem", "-tlskey", "/untrusted_key.pem"]
+CMD ["-tls=0","-l=0.0.0.0:8989"]

@@ -26,10 +26,10 @@ To start the mock server on port 8989 *(default used by vcsim)* simply run the c
 docker run -p 8989:8989 omniproc/vcsim
 ```
 
-You can then list the available API methods by opening the [about page](https://127.0.0.1:8989/about) in a browser or crawl them using tools like `curl`:
+You can then list the available API methods by opening the [about page](http://127.0.0.1:8989/about) in a browser or crawl them using tools like `curl`:
 
 ``` bash
-curl -sk https://user:pass@127.0.0.1:8989/about
+curl -sk http://user:pass@127.0.0.1:8989/about
 ```
 
 ## GOVC
@@ -39,7 +39,7 @@ Once inside the image you can use the following workflow to get basic informatio
 
 ``` bash
 ./vcsim &
-export GOVC_URL=https://user:pass@127.0.0.1:8989/sdk GOVC_SIM_PID=YOUR_RETURNED_PID
+export GOVC_URL=http://user:pass@127.0.0.1:8989/sdk GOVC_SIM_PID=YOUR_RETURNED_PID
 export GOVC_INSECURE=1
 
 # See https://github.com/vmware/govmomi/blob/master/govc/USAGE.md
@@ -166,21 +166,4 @@ export GOVC_INSECURE=1
 #   Controller:   pvscsi-202
 #   Unit number:  0
 #   File:         [LocalDS_0] DC0_H0_VM0/disk2.vmdk
-```
-
-## Testing with PyVmomi
-
-This project has a simple Python test script attached to validate the propper functionality between VCSIM and PyVmomi.
-You may see the optional arguments by calling it's help:
-
-``` bash
-python .\vcsimtest.py -h
-# usage: vcsimtest [-h] [-s HOSTNAME] [-p HOSTPORT] [--nossl] [--debug]
-# Test basic VCSIM functionality with PyVmomi.
-# optional arguments:
-#   -h, --help   show this help message and exit
-#   -s HOSTNAME  server hostname of the VCSIM.
-#   -p HOSTPORT  server SSL port of the VCSIM.
-#   --nossl      disable SSL validation.
-#   --debug      enable debug logging.
 ```
